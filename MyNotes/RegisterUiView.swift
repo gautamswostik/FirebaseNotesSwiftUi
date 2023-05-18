@@ -15,9 +15,6 @@ struct RegisterUiView: View {
     @State var showsAlert = false
     var body: some View {
         ZStack{
-            if authViewModel.registrationLoading{
-                showProgressView()
-            }
             VStack {
                 CustomTextField(textFieldTitle: "Please enter your Email",
                                 fieldLabel:"Email Address",
@@ -29,34 +26,40 @@ struct RegisterUiView: View {
                                   state: $passwordState) { password in
                     isValidPassword(password)
                 }
-                NavigationLink(destination: HomeView() , isActive: $authViewModel.loginSuccess) {
-                    Button {
-                        register()
-                    } label:{
-                        Text("Register")
-                            .padding(.vertical ,12)
-                            .padding(.horizontal,12)
-                            .frame(maxWidth: .infinity)
-                    }
-                    .alert(authViewModel.error, isPresented: $authViewModel.showError) {
-                        Button("OK", role: .cancel) { }
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .padding(.vertical , 10)
+                Button {
+                    register()
+                } label:{
+                    Text("Register")
+                        .padding(.vertical ,12)
+                        .padding(.horizontal,12)
+                        .frame(maxWidth: .infinity)
                 }
+                .alert(authViewModel.error, isPresented: $authViewModel.showError) {
+                    Button("OK", role: .cancel) { }
+                }
+                .buttonStyle(.borderedProminent)
+                .padding(.vertical , 10)
+                
+            }.padding()
+            if authViewModel.registrationLoading{
+                showProgressView()
             }
-            .disabled(authViewModel.loginLoading)
         }.onReceive(authViewModel.$registrationSuccess, perform: { registrationSuccess in
             if registrationSuccess {
                 presentationMode.wrappedValue.dismiss()
             }
         })
-        .padding()
+        
     }
     
     @ViewBuilder
     private func showProgressView() -> some View {
         ProgressView()
+            .frame(maxWidth: .infinity , maxHeight: .infinity)
+            .background(Color.black.opacity(0.4))
+            .foregroundColor(.white)
+            .cornerRadius(10)
+            .ignoresSafeArea()
     }
     
     private func register(){
