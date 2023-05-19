@@ -11,7 +11,7 @@ import Firebase
 class AuthViewModel: ObservableObject {
     @Published var loginLoading:Bool = Bool()
     @Published var showError:Bool = Bool()
-    @Published var loginSuccess:Bool = Bool()
+    @Published var loginSuccess:Bool = true
     @Published var registrationSuccess:Bool = Bool()
     @Published var registrationLoading:Bool = Bool()
     @Published var error:String = String()

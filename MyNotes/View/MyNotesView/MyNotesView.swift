@@ -22,9 +22,10 @@
  */
 import SwiftUI
 
-struct HomeView: View {
+struct MyNotesView: View {
     @ObservedObject var dataViewModel = DataViewModel()
     @State var isSheetPresented:Bool =  Bool()
+    @State var isLogoutAlertPresented:Bool =  Bool()
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
         NavigationView{
@@ -51,28 +52,36 @@ struct HomeView: View {
                                         dataViewModel.deleteDocument(id: item.id)
                                     }))
                                 }
-                                Button {
-                                    dataViewModel.addData(title: "pppopo",
-                                                          description: "ppopopopo",
-                                                          image: "https://i.pinimg.com/564x/20/41/21/20412163118adbb85e7399a5ab249033.jpg")
-                                } label: {
-                                    Text("Go to Page Three")
-                                }.buttonStyle(.borderedProminent)
-                                    .padding(.vertical , 10)
+                                
                             }
                         }
                         FloatingActionButton(action: {
                             self.isSheetPresented = true
                         }, icon: "plus")
-                    }.sheet(isPresented: $isSheetPresented) {
-                        NavigationView {
-                            Text("Hello World")
-                                .navigationTitle("Add Note") // <-- Here
-                        }
                     }
                 }
             }
-        }.navigationBarBackButtonHidden(true)
+        }
+        .alert("Log out?", isPresented: $isLogoutAlertPresented) {
+            HStack {
+                Button("Cancel" , role: .cancel) {
+                }
+                Button("OK") {
+                    presentationMode.wrappedValue.dismiss()
+                }
+            }
+        }
+        .sheet(isPresented: $isSheetPresented) {
+            AddNotesView(dataViewModel: dataViewModel)
+        }
+        .navigationBarBackButtonHidden(true)
+        .gesture(DragGesture(minimumDistance: 16 , coordinateSpace: .local).onEnded({ value in
+            if abs(value.translation.height) < abs(value.translation.width) {
+                if value.startLocation.x < 10.0 && value.translation.width > 0 {
+                    self.isLogoutAlertPresented = true
+                }
+            }
+        }))
     }
     
     @ViewBuilder

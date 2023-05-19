@@ -10,13 +10,12 @@ import Firebase
 
 struct LoginView: View {
     @StateObject var authViewModel = AuthViewModel()
-    @State private var emailState: String = ""
-    @State private var passwordState: String = ""
+    @State private var emailState: String = String()
+    @State private var passwordState: String = String()
     @State var showsAlert = false
     var body: some View {
         NavigationView {
             ZStack{
-                
                 VStack {
                     CustomTextField(textFieldTitle: "Please enter your Email",
                                     fieldLabel:"Email Address",
@@ -28,7 +27,7 @@ struct LoginView: View {
                                       state: $passwordState) { password in
                         isValidPassword(password)
                     }
-                    NavigationLink(destination: HomeView() , isActive: $authViewModel.loginSuccess) {
+                    NavigationLink(destination: MyNotesView() , isActive: $authViewModel.loginSuccess) {
                         Button {
                             login()
                         } label:{
@@ -55,15 +54,7 @@ struct LoginView: View {
         }
     }
     
-    @ViewBuilder
-    private func showProgressView() -> some View {
-        ProgressView()
-            .frame(maxWidth: .infinity , maxHeight: .infinity)
-            .background(Color.black.opacity(0.4))
-            .foregroundColor(.white)
-            .cornerRadius(10)
-            .ignoresSafeArea()
-    }
+    
     
     private func login(){
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)

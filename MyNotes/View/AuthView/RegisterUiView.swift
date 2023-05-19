@@ -52,16 +52,6 @@ struct RegisterUiView: View {
         
     }
     
-    @ViewBuilder
-    private func showProgressView() -> some View {
-        ProgressView()
-            .frame(maxWidth: .infinity , maxHeight: .infinity)
-            .background(Color.black.opacity(0.4))
-            .foregroundColor(.white)
-            .cornerRadius(10)
-            .ignoresSafeArea()
-    }
-    
     private func register(){
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         authViewModel.register(email: self.emailState, password: self.passwordState)

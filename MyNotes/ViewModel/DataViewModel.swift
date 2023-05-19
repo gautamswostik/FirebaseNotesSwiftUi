@@ -19,6 +19,8 @@ enum DataState {
 class DataViewModel: ObservableObject {
     @Published var notes:[Note] = [Note]()
     @Published var showError:Bool = Bool()
+    @Published var addContentLoading:Bool = Bool()
+    @Published var addContentSuccess:Bool = false
     @Published var error:String = String()
     @Published var currentState:DataState = DataState.initial
     let database = Firestore.firestore()
@@ -53,7 +55,12 @@ class DataViewModel: ObservableObject {
     }
     
     func addData(title:String , description:String , image:String) {
-        self.currentState = DataState.loading
+        if title.isEmpty || description.isEmpty || image.isEmpty{
+            self.showError = true
+            self.error = "Please add all data"
+            return
+        }
+        self.addContentLoading = true
         database.collection("users")
             .addDocument(data:
                             ["title":title ,
@@ -62,16 +69,16 @@ class DataViewModel: ObservableObject {
                              "dateCreated":Date.now
                             ]) {error in
                 if error != nil {
-                    
                     self.showError = true
                     self.error = error?.localizedDescription ?? ""
-                    self.currentState = DataState.error
+                    self.addContentLoading = false
                     return
                 }
                 self.loadNotes()
-                self.currentState = DataState.success
+                self.addContentLoading = false
+                self.addContentSuccess = true
+                self.addContentSuccess = false
             }
-        
     }
     
     func deleteDocument(id: String) {

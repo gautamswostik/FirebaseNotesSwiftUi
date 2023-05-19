@@ -14,7 +14,7 @@
 		7C461E6D2A0DEB590048BC9B /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C461E6C2A0DEB590048BC9B /* Validators.swift */; };
 		7C461E702A1063800048BC9B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C461E6F2A1063800048BC9B /* GoogleService-Info.plist */; };
 		7C461E752A1065920048BC9B /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C461E742A1065920048BC9B /* AuthViewModel.swift */; };
-		7C461E782A10D6E80048BC9B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C461E772A10D6E80048BC9B /* HomeView.swift */; };
+		7C461E782A10D6E80048BC9B /* MyNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C461E772A10D6E80048BC9B /* MyNotesView.swift */; };
 		7CD1EACE2A0B41A0006202D0 /* MyNotesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1EACD2A0B41A0006202D0 /* MyNotesApp.swift */; };
 		7CD1EAD02A0B41A0006202D0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1EACF2A0B41A0006202D0 /* LoginView.swift */; };
 		7CD1EAD22A0B41A1006202D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CD1EAD12A0B41A1006202D0 /* Assets.xcassets */; };
@@ -22,6 +22,9 @@
 		7CD1EADF2A0B41A2006202D0 /* MyNotesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1EADE2A0B41A2006202D0 /* MyNotesTests.swift */; };
 		7CD1EAE92A0B41A2006202D0 /* MyNotesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1EAE82A0B41A2006202D0 /* MyNotesUITests.swift */; };
 		7CD1EAEB2A0B41A2006202D0 /* MyNotesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1EAEA2A0B41A2006202D0 /* MyNotesUITestsLaunchTests.swift */; };
+		7CDBBAEC2A17A80A005024D0 /* AddNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDBBAEB2A17A80A005024D0 /* AddNotesView.swift */; };
+		7CDBBAEE2A17C6A4005024D0 /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDBBAED2A17C6A4005024D0 /* CustomTextEditor.swift */; };
+		7CDBBAF02A17CBF1005024D0 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDBBAEF2A17CBF1005024D0 /* ProgressView.swift */; };
 		7CFF22ED2A1301DB0066DCCC /* DataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFF22EC2A1301DB0066DCCC /* DataViewModel.swift */; };
 		7CFF22F02A1304EC0066DCCC /* NotesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFF22EF2A1304EC0066DCCC /* NotesModel.swift */; };
 		7CFF883E2A1124EA00EAD9A7 /* RegisterUiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFF883D2A1124EA00EAD9A7 /* RegisterUiView.swift */; };
@@ -56,7 +59,7 @@
 		7C461E6C2A0DEB590048BC9B /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
 		7C461E6F2A1063800048BC9B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7C461E742A1065920048BC9B /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
-		7C461E772A10D6E80048BC9B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		7C461E772A10D6E80048BC9B /* MyNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNotesView.swift; sourceTree = "<group>"; };
 		7CD1EACA2A0B41A0006202D0 /* MyNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD1EACD2A0B41A0006202D0 /* MyNotesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNotesApp.swift; sourceTree = "<group>"; };
 		7CD1EACF2A0B41A0006202D0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -67,6 +70,9 @@
 		7CD1EAE42A0B41A2006202D0 /* MyNotesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyNotesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD1EAE82A0B41A2006202D0 /* MyNotesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNotesUITests.swift; sourceTree = "<group>"; };
 		7CD1EAEA2A0B41A2006202D0 /* MyNotesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNotesUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7CDBBAEB2A17A80A005024D0 /* AddNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNotesView.swift; sourceTree = "<group>"; };
+		7CDBBAED2A17C6A4005024D0 /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
+		7CDBBAEF2A17CBF1005024D0 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		7CFF22EC2A1301DB0066DCCC /* DataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewModel.swift; sourceTree = "<group>"; };
 		7CFF22EF2A1304EC0066DCCC /* NotesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesModel.swift; sourceTree = "<group>"; };
 		7CFF883D2A1124EA00EAD9A7 /* RegisterUiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUiView.swift; sourceTree = "<group>"; };
@@ -125,6 +131,7 @@
 				7C461E672A0DCE570048BC9B /* CustomTextField.swift */,
 				7C461E692A0DDC7F0048BC9B /* CustomSecureField.swift */,
 				7C3280C92A1467C9008B2BCE /* FloatingActionButton.swift */,
+				7CDBBAED2A17C6A4005024D0 /* CustomTextEditor.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -133,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				7C461E6C2A0DEB590048BC9B /* Validators.swift */,
+				7CDBBAEF2A17CBF1005024D0 /* ProgressView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -146,12 +154,13 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		7C461E762A10D6D60048BC9B /* Home */ = {
+		7C461E762A10D6D60048BC9B /* MyNotesView */ = {
 			isa = PBXGroup;
 			children = (
-				7C461E772A10D6E80048BC9B /* HomeView.swift */,
+				7C461E772A10D6E80048BC9B /* MyNotesView.swift */,
+				7CDBBAEB2A17A80A005024D0 /* AddNotesView.swift */,
 			);
-			path = Home;
+			path = MyNotesView;
 			sourceTree = "<group>";
 		};
 		7CD1EAC12A0B41A0006202D0 = {
@@ -179,15 +188,12 @@
 		7CD1EACC2A0B41A0006202D0 /* MyNotes */ = {
 			isa = PBXGroup;
 			children = (
-				7CFF22EE2A1304DC0066DCCC /* Model */,
-				7C461E762A10D6D60048BC9B /* Home */,
-				7C461E6F2A1063800048BC9B /* GoogleService-Info.plist */,
-				7C461E6E2A10606B0048BC9B /* ViewModel */,
 				7C461E6B2A0DEB400048BC9B /* Utils */,
 				7C461E662A0DCE420048BC9B /* CustomViews */,
-				7CD1EACD2A0B41A0006202D0 /* MyNotesApp.swift */,
-				7CFF883D2A1124EA00EAD9A7 /* RegisterUiView.swift */,
-				7CD1EACF2A0B41A0006202D0 /* LoginView.swift */,
+				7CFF22EE2A1304DC0066DCCC /* Model */,
+				7CDBBAEA2A1730A9005024D0 /* View */,
+				7C461E6E2A10606B0048BC9B /* ViewModel */,
+				7C461E6F2A1063800048BC9B /* GoogleService-Info.plist */,
 				7CD1EAD12A0B41A1006202D0 /* Assets.xcassets */,
 				7CD1EAD32A0B41A1006202D0 /* Preview Content */,
 			);
@@ -217,6 +223,25 @@
 				7CD1EAEA2A0B41A2006202D0 /* MyNotesUITestsLaunchTests.swift */,
 			);
 			path = MyNotesUITests;
+			sourceTree = "<group>";
+		};
+		7CDBBAE92A173079005024D0 /* AuthView */ = {
+			isa = PBXGroup;
+			children = (
+				7CFF883D2A1124EA00EAD9A7 /* RegisterUiView.swift */,
+				7CD1EACF2A0B41A0006202D0 /* LoginView.swift */,
+			);
+			path = AuthView;
+			sourceTree = "<group>";
+		};
+		7CDBBAEA2A1730A9005024D0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7C461E762A10D6D60048BC9B /* MyNotesView */,
+				7CDBBAE92A173079005024D0 /* AuthView */,
+				7CD1EACD2A0B41A0006202D0 /* MyNotesApp.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		7CFF22EE2A1304DC0066DCCC /* Model */ = {
@@ -478,14 +503,17 @@
 			files = (
 				7C461E6A2A0DDC7F0048BC9B /* CustomSecureField.swift in Sources */,
 				7CFF22F02A1304EC0066DCCC /* NotesModel.swift in Sources */,
-				7C461E782A10D6E80048BC9B /* HomeView.swift in Sources */,
+				7C461E782A10D6E80048BC9B /* MyNotesView.swift in Sources */,
 				7CFF22ED2A1301DB0066DCCC /* DataViewModel.swift in Sources */,
 				7CD1EAD02A0B41A0006202D0 /* LoginView.swift in Sources */,
 				7C461E752A1065920048BC9B /* AuthViewModel.swift in Sources */,
+				7CDBBAEE2A17C6A4005024D0 /* CustomTextEditor.swift in Sources */,
 				7CD1EACE2A0B41A0006202D0 /* MyNotesApp.swift in Sources */,
 				7CFF883E2A1124EA00EAD9A7 /* RegisterUiView.swift in Sources */,
 				7C461E682A0DCE570048BC9B /* CustomTextField.swift in Sources */,
 				7C3280CA2A1467C9008B2BCE /* FloatingActionButton.swift in Sources */,
+				7CDBBAF02A17CBF1005024D0 /* ProgressView.swift in Sources */,
+				7CDBBAEC2A17A80A005024D0 /* AddNotesView.swift in Sources */,
 				7C461E6D2A0DEB590048BC9B /* Validators.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

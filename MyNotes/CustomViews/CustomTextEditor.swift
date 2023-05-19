@@ -1,4 +1,11 @@
 //
+//  CustomTextEditor.swift
+//  MyNotes
+//
+//  Created by swostik gautam on 19/05/2023.
+//
+
+//
 //  CustomTextField.swift
 //  MyNotes
 //
@@ -7,7 +14,7 @@
 
 import SwiftUI
 
-struct CustomTextField: View {
+struct CustomTextEditor: View {
     var textFieldTitle: String
     var fieldLabel: String
     @Binding var state: String
@@ -17,7 +24,7 @@ struct CustomTextField: View {
     var body: some View {
         VStack(alignment: .leading){
             Text(fieldLabel)
-            TextField(textFieldTitle,text: $state)
+            TextEditor(text: $state)
                 .onChange(of: state, perform: { newValue in
                     if !newValue.isEmpty {
                         self.isValid =  validate?(newValue) ?? true
