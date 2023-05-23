@@ -11,12 +11,16 @@ import Firebase
 class AuthViewModel: ObservableObject {
     @Published var loginLoading:Bool = Bool()
     @Published var showError:Bool = Bool()
-    @Published var loginSuccess:Bool = true
+    @Published var loginSuccess:Bool = Bool()
+    @Published var logOutSuccess:Bool = Bool()
     @Published var registrationSuccess:Bool = Bool()
     @Published var registrationLoading:Bool = Bool()
     @Published var error:String = String()
     
+    
+    
     init () {}
+    
     
     func login(email:String , password:String) {
         if email.isEmpty || password.isEmpty {
@@ -64,5 +68,16 @@ class AuthViewModel: ObservableObject {
             self.registrationLoading = false
             self.registrationSuccess = true
         }
+    }
+    
+    func logout() {
+        do {
+            try Auth.auth().signOut()
+            self.logOutSuccess = true
+        } catch {
+            self.showError = true
+            self.error = error.localizedDescription
+        }
+        
     }
 }

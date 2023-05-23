@@ -20,28 +20,28 @@ struct AddNotesView: View {
             NavigationView {
                 VStack(alignment: .leading){
                     CustomTextField(textFieldTitle: "Title", fieldLabel: "Title", state: $title)
-                    CustomTextEditor(textFieldTitle: "Description", fieldLabel: "Description",
+                    CustomTextEditor(textFieldTitle: "Description",
+                                     fieldLabel: "Description",
                                      state: $description)
                     .padding(.top , 10)
-                    Button {
-                        self.showPicker = true
-                    } label: {
-                        ZStack(alignment: .center) {
-                            Rectangle()
-                                .strokeBorder(style: StrokeStyle(lineWidth: 2, dash: [10]))
-                                .padding(.top , 10)
-                            VStack {
-                                Image(systemName: "photo")
-                                    .resizable()
-                                    .frame(width: 40 , height: 40)
-                                Text("Add Image")
-                                    .padding(.top , 10)
-                            }
-                        }
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                    .photosPicker(isPresented: $showPicker, selection: $avatarItem)
-                    
+//                    Button {
+//                        self.showPicker = true
+//                    } label: {
+//                        ZStack(alignment: .center) {
+//                            Rectangle()
+//                                .strokeBorder(style: StrokeStyle(lineWidth: 2, dash: [10]))
+//                                .padding(.top , 10)
+//                            VStack {
+//                                Image(systemName: "photo")
+//                                    .resizable()
+//                                    .frame(width: 40 , height: 40)
+//                                Text("Add Image")
+//                                    .padding(.top , 10)
+//                            }
+//                        }
+//                    }
+//                    .buttonStyle(PlainButtonStyle())
+//                    .photosPicker(isPresented: $showPicker, selection: $avatarItem)
                     Button {
                         addContent()
                     } label:{
@@ -55,8 +55,7 @@ struct AddNotesView: View {
                     }
                     .buttonStyle(.borderedProminent)
                     .padding(.top , 10)
-                    .padding(.bottom , 100)
-                    
+                    .padding(.bottom , 60)
                     Spacer()
                 }
                 .padding()
@@ -76,7 +75,7 @@ struct AddNotesView: View {
     private func addContent() {
         dataViewModel.addData(title: title,
                               description: description,
-                              image: "https://i.pinimg.com/474x/cc/fa/c9/ccfac9ec4e3920b3beaa272a683236b3.jpg")
+                              image: "https://i.pinimg.com/564x/c2/a9/15/c2a9156b5b4fc5f560935858896f5165.jpg")
     }
 }
 

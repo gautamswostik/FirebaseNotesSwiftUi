@@ -24,7 +24,9 @@ import SwiftUI
 
 struct MyNotesView: View {
     @ObservedObject var dataViewModel = DataViewModel()
+    @ObservedObject var authViewModel = AuthViewModel()
     @State var isSheetPresented:Bool =  Bool()
+    @State var noteAlreadyAdded:Bool =  Bool()
     @State var isLogoutAlertPresented:Bool =  Bool()
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
@@ -42,23 +44,60 @@ struct MyNotesView: View {
                                 Image("EmptyIllustration")
                             }
                             else {
-                                List(dataViewModel.notes ,id: \.id){ item in
-                                    VStack {
-                                        Text(item.title)
-                                        if !item.image.isEmpty{
-                                            AsyncImage(url: URL(string:  item.image )).scaledToFit()
+                                ScrollView {
+                                    LazyVStack {
+                                        ForEach(dataViewModel.notes, id: \.id) { item in
+                                            VStack {
+                                                VStack(alignment: .leading){
+                                                    Text(item.title)
+                                                        .font(.system(size: 24, design: .serif))
+                                                        .padding(.horizontal , 16)
+                                                        .padding(.vertical , 8)
+                                                        .lineLimit(1)
+                                                    AsyncImage(url: URL(string: item.image)){ image in
+                                                        image
+                                                            .resizable()
+                                                    } placeholder: {
+                                                        Color.black.opacity(0.1)
+                                                    }
+                                                    .frame(width:UIScreen.main.bounds.width,
+                                                           height:  UIScreen.main.bounds.height*0.40)
+                                                    
+                                                    Text(item.description)
+                                                        .multilineTextAlignment(.leading)
+                                                        .font(.system(size: 16, design: .serif))
+                                                        .padding(.leading , 16)
+                                                }
+                                                HStack {
+                                                    Spacer()
+                                                    Text(dateCreated(date: item.dateCreated))
+                                                        .font(.system(size: 16, design: .serif))
+                                                }
+                                                .padding(.vertical,20)
+                                            }
+                                            .background(Color.white)
+                                            .shadow(color: Color.gray.opacity(0.3), radius: 5, x: 0, y: 2)
                                         }
-                                    }.gesture(TapGesture().onEnded({ _ in
-                                        dataViewModel.deleteDocument(id: item.id)
-                                    }))
+                                    }
+                                    .padding(.horizontal)
+                                    .padding(.top)
                                 }
-                                
                             }
                         }
                         FloatingActionButton(action: {
-                            self.isSheetPresented = true
+                            if isDateBeforeOrToday(date: dataViewModel.notes.last?.dateCreated ?? Date.distantPast) {
+                                self.isSheetPresented = true
+                                return
+                            }
+                            self.noteAlreadyAdded = true
                         }, icon: "plus")
                     }
+                }
+            }
+        }
+        .alert("You have already added note for today", isPresented: $noteAlreadyAdded) {
+            HStack {
+                Button("Ok" , role: .cancel) {
                 }
             }
         }
@@ -67,7 +106,7 @@ struct MyNotesView: View {
                 Button("Cancel" , role: .cancel) {
                 }
                 Button("OK") {
-                    presentationMode.wrappedValue.dismiss()
+                    authViewModel.logout()
                 }
             }
         }
@@ -82,11 +121,28 @@ struct MyNotesView: View {
                 }
             }
         }))
+        .onReceive(authViewModel.$logOutSuccess) { logOutSucces in
+            if logOutSucces {
+                presentationMode.wrappedValue.dismiss()
+            }
+        }
     }
     
     @ViewBuilder
     private func showProgressView() -> some View {
         ProgressView()
+    }
+    func isDateBeforeOrToday(date: Date) -> Bool {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        let otherDate = calendar.startOfDay(for: date)
+        
+        return calendar.compare(otherDate, to: today, toGranularity: .day) != .orderedDescending
+    }
+    private func dateCreated(date:Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm E, d MMM y"
+        return formatter.string(from: date)
     }
 }
 

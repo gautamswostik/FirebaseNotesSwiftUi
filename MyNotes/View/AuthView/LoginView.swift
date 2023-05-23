@@ -49,8 +49,12 @@ struct LoginView: View {
                 if authViewModel.loginLoading{
                     showProgressView()
                 }
+            }.onReceive(authViewModel.$loginSuccess) { loginSucces in
+                if loginSucces {
+                    emailState = ""
+                    passwordState = ""
+                }
             }
-            
         }
     }
     
@@ -59,12 +63,5 @@ struct LoginView: View {
     private func login(){
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         authViewModel.login(email: self.emailState, password: self.passwordState)
-    }
-}
-
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
     }
 }
