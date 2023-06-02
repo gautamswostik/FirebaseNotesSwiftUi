@@ -42,6 +42,15 @@ struct LoginView: View {
                         .buttonStyle(.borderedProminent)
                         .padding(.vertical , 10)
                     }
+                    NavigationLink{
+                        QrScannerView(authViewModel: authViewModel)
+                    } label: {
+                        VStack {
+                            Image(systemName: "qrcode.viewfinder")
+                                .font(.system(size: 45))
+                                .foregroundColor(.black)
+                        }
+                    }.padding(.vertical , 20)
                     NavigationLink("Don't have an account ? Register") {
                         RegisterUiView()
                     }

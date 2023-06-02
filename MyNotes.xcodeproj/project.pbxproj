@@ -9,12 +9,15 @@
 /* Begin PBXBuildFile section */
 		0842916D99B5ABD7D626B810 /* Pods_MyNotes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494EF2638093DAA4CFA90264 /* Pods_MyNotes.framework */; };
 		7C3280CA2A1467C9008B2BCE /* FloatingActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3280C92A1467C9008B2BCE /* FloatingActionButton.swift */; };
+		7C3786152A26C91100FB6AE8 /* QrScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3786142A26C91100FB6AE8 /* QrScannerView.swift */; };
 		7C461E682A0DCE570048BC9B /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C461E672A0DCE570048BC9B /* CustomTextField.swift */; };
 		7C461E6A2A0DDC7F0048BC9B /* CustomSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C461E692A0DDC7F0048BC9B /* CustomSecureField.swift */; };
 		7C461E6D2A0DEB590048BC9B /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C461E6C2A0DEB590048BC9B /* Validators.swift */; };
 		7C461E702A1063800048BC9B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C461E6F2A1063800048BC9B /* GoogleService-Info.plist */; };
 		7C461E752A1065920048BC9B /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C461E742A1065920048BC9B /* AuthViewModel.swift */; };
 		7C461E782A10D6E80048BC9B /* MyNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C461E772A10D6E80048BC9B /* MyNotesView.swift */; };
+		7C7E11D62A274CDF008E57CE /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E11D52A274CDF008E57CE /* CameraView.swift */; };
+		7C7E11D82A2769E3008E57CE /* QrScannerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E11D72A2769E3008E57CE /* QrScannerDelegate.swift */; };
 		7CD1EACE2A0B41A0006202D0 /* MyNotesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1EACD2A0B41A0006202D0 /* MyNotesApp.swift */; };
 		7CD1EAD02A0B41A0006202D0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1EACF2A0B41A0006202D0 /* LoginView.swift */; };
 		7CD1EAD22A0B41A1006202D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CD1EAD12A0B41A1006202D0 /* Assets.xcassets */; };
@@ -54,12 +57,15 @@
 		50E727FEC48B34079469ACDE /* Pods_MyNotes_MyNotesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyNotes_MyNotesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		676E5DECF00B19576B869D2F /* Pods-MyNotes-MyNotesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyNotes-MyNotesUITests.release.xcconfig"; path = "Target Support Files/Pods-MyNotes-MyNotesUITests/Pods-MyNotes-MyNotesUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7C3280C92A1467C9008B2BCE /* FloatingActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingActionButton.swift; sourceTree = "<group>"; };
+		7C3786142A26C91100FB6AE8 /* QrScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrScannerView.swift; sourceTree = "<group>"; };
 		7C461E672A0DCE570048BC9B /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		7C461E692A0DDC7F0048BC9B /* CustomSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureField.swift; sourceTree = "<group>"; };
 		7C461E6C2A0DEB590048BC9B /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
 		7C461E6F2A1063800048BC9B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7C461E742A1065920048BC9B /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		7C461E772A10D6E80048BC9B /* MyNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNotesView.swift; sourceTree = "<group>"; };
+		7C7E11D52A274CDF008E57CE /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		7C7E11D72A2769E3008E57CE /* QrScannerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrScannerDelegate.swift; sourceTree = "<group>"; };
 		7CD1EACA2A0B41A0006202D0 /* MyNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD1EACD2A0B41A0006202D0 /* MyNotesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNotesApp.swift; sourceTree = "<group>"; };
 		7CD1EACF2A0B41A0006202D0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -123,6 +129,16 @@
 				94D1546E660E5B406F32F5E6 /* Pods-MyNotesTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		7C3786112A26C84E00FB6AE8 /* QrScanner */ = {
+			isa = PBXGroup;
+			children = (
+				7C3786142A26C91100FB6AE8 /* QrScannerView.swift */,
+				7C7E11D52A274CDF008E57CE /* CameraView.swift */,
+				7C7E11D72A2769E3008E57CE /* QrScannerDelegate.swift */,
+			);
+			path = QrScanner;
 			sourceTree = "<group>";
 		};
 		7C461E662A0DCE420048BC9B /* CustomViews */ = {
@@ -237,6 +253,7 @@
 		7CDBBAEA2A1730A9005024D0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7C3786112A26C84E00FB6AE8 /* QrScanner */,
 				7C461E762A10D6D60048BC9B /* MyNotesView */,
 				7CDBBAE92A173079005024D0 /* AuthView */,
 				7CD1EACD2A0B41A0006202D0 /* MyNotesApp.swift */,
@@ -501,12 +518,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C3786152A26C91100FB6AE8 /* QrScannerView.swift in Sources */,
 				7C461E6A2A0DDC7F0048BC9B /* CustomSecureField.swift in Sources */,
 				7CFF22F02A1304EC0066DCCC /* NotesModel.swift in Sources */,
 				7C461E782A10D6E80048BC9B /* MyNotesView.swift in Sources */,
 				7CFF22ED2A1301DB0066DCCC /* DataViewModel.swift in Sources */,
 				7CD1EAD02A0B41A0006202D0 /* LoginView.swift in Sources */,
 				7C461E752A1065920048BC9B /* AuthViewModel.swift in Sources */,
+				7C7E11D82A2769E3008E57CE /* QrScannerDelegate.swift in Sources */,
 				7CDBBAEE2A17C6A4005024D0 /* CustomTextEditor.swift in Sources */,
 				7CD1EACE2A0B41A0006202D0 /* MyNotesApp.swift in Sources */,
 				7CFF883E2A1124EA00EAD9A7 /* RegisterUiView.swift in Sources */,
@@ -515,6 +534,7 @@
 				7CDBBAF02A17CBF1005024D0 /* ProgressView.swift in Sources */,
 				7CDBBAEC2A17A80A005024D0 /* AddNotesView.swift in Sources */,
 				7C461E6D2A0DEB590048BC9B /* Validators.swift in Sources */,
+				7C7E11D62A274CDF008E57CE /* CameraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -674,8 +694,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MyNotes/Preview Content\"";
+				DEVELOPMENT_TEAM = 875CF8M6S9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -703,8 +725,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MyNotes/Preview Content\"";
+				DEVELOPMENT_TEAM = 875CF8M6S9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
