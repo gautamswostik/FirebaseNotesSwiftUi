@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RegisterUiView: View {
+    @EnvironmentObject var localeViewModel: LocaleViewModel
     @StateObject var authViewModel = AuthViewModel()
     @State private var emailState: String = String()
     @State private var passwordState: String = String()
@@ -16,26 +17,26 @@ struct RegisterUiView: View {
     var body: some View {
         ZStack{
             VStack {
-                CustomTextField(textFieldTitle: "Please enter your Email",
-                                fieldLabel:"Email Address",
+                CustomTextField(textFieldTitle: localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.enterEmail.rawValue),
+                                fieldLabel:localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.emailAddress.rawValue),
                                 state: $emailState) { email in
                     isValidEmail(email)
                 }
-                CustomSecureField(textFieldTitle: "Please enter your Password",
-                                  fieldLabel: "Password",
+                CustomSecureField(textFieldTitle: localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.enterPassword.rawValue),
+                                  fieldLabel: localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.password.rawValue),
                                   state: $passwordState) { password in
                     isValidPassword(password)
                 }
                 Button {
                     register()
                 } label:{
-                    Text("Register")
+                    Text(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.register.rawValue))
                         .padding(.vertical ,12)
                         .padding(.horizontal,12)
                         .frame(maxWidth: .infinity)
                 }
                 .alert(authViewModel.error, isPresented: $authViewModel.showError) {
-                    Button("OK", role: .cancel) { }
+                    Button(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.ok.rawValue), role: .cancel) { }
                 }
                 .buttonStyle(.borderedProminent)
                 .padding(.vertical , 10)

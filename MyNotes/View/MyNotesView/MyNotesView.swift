@@ -23,10 +23,10 @@
 import SwiftUI
 
 struct MyNotesView: View {
+    @EnvironmentObject var localeViewModel: LocaleViewModel
     @ObservedObject var dataViewModel = DataViewModel()
     @ObservedObject var authViewModel = AuthViewModel()
     @State var isSheetPresented:Bool =  Bool()
-    @State var noteAlreadyAdded:Bool =  Bool()
     @State var isLogoutAlertPresented:Bool =  Bool()
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
@@ -89,23 +89,16 @@ struct MyNotesView: View {
                                 self.isSheetPresented = true
                                 return
                             }
-                            self.noteAlreadyAdded = true
                         }, icon: "plus")
                     }
                 }
             }
         }
-        .alert("You have already added note for today", isPresented: $noteAlreadyAdded) {
+        .alert(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.logOut.rawValue), isPresented: $isLogoutAlertPresented) {
             HStack {
-                Button("Ok" , role: .cancel) {
+                Button(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.cancel.rawValue), role: .cancel) {
                 }
-            }
-        }
-        .alert("Log out?", isPresented: $isLogoutAlertPresented) {
-            HStack {
-                Button("Cancel" , role: .cancel) {
-                }
-                Button("OK") {
+                Button(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.ok.rawValue)) {
                     authViewModel.logout()
                 }
             }

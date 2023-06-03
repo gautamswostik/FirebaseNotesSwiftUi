@@ -21,6 +21,7 @@ enum QrFormat {
 }
 
 struct QrScannerView: View {
+    @EnvironmentObject var localeViewModel: LocaleViewModel
     @ObservedObject var authViewModel:AuthViewModel
     @State private var isScanning:Bool = Bool()
     @State private var session: AVCaptureSession = .init()
@@ -36,18 +37,18 @@ struct QrScannerView: View {
         ZStack{
             CameraView(frameSize: CGSize(width: UIScreen.main.bounds.width, height:  UIScreen.main.bounds.height), session: $session)
                 .scaleEffect(0.97)
-                GeometryReader {
-                    let size = $0.size
-                    ForEach(0...4 , id: \.self) { index in
-                        let rotation = Double(index) * 90
-                        RoundedRectangle(cornerRadius: 2 , style: .circular)
-                            .trim(from: 0.61 , to: 0.64)
-                            .stroke(.red,style: StrokeStyle(lineWidth: 5 , lineCap: .round , lineJoin: .round))
-                            .rotationEffect(.degrees(rotation))
-                    }
-                    .frame(width: size.width , height: size.width)
-                    .frame(maxWidth: .infinity , maxHeight: .infinity)
+            GeometryReader {
+                let size = $0.size
+                ForEach(0...4 , id: \.self) { index in
+                    let rotation = Double(index) * 90
+                    RoundedRectangle(cornerRadius: 2 , style: .circular)
+                        .trim(from: 0.61 , to: 0.64)
+                        .stroke(.red,style: StrokeStyle(lineWidth: 5 , lineCap: .round , lineJoin: .round))
+                        .rotationEffect(.degrees(rotation))
                 }
+                .frame(width: size.width , height: size.width)
+                .frame(maxWidth: .infinity , maxHeight: .infinity)
+            }
             .padding(.horizontal , 50)
             .onAppear(perform: checkCameraPermission)
             .onChange(of: qrDelegate.scannedCode, perform: { newValue in
@@ -56,7 +57,7 @@ struct QrScannerView: View {
             })
             .alert(errorMessage, isPresented: $showError) {
                 if cameraPermission == .denied {
-                    Button("Settings") {
+                    Button(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.settings.rawValue)) {
                         let settingsString = UIApplication.openSettingsURLString
                         if let settingsUrl = URL(string: settingsString) {
                             openUrl(settingsUrl)
@@ -64,12 +65,12 @@ struct QrScannerView: View {
                     }
                 }
                 if qrFormat == .invalid {
-                    Button("Scan Again") {
+                    Button(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.scanAgain.rawValue)) {
                         setupCamera()
                         qrFormat = .noAvailable
                     }
                 }
-                Button("Cancel", role: .cancel) { }
+                Button(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.cancel.rawValue), role: .cancel) { }
             }
         }
     }
@@ -80,7 +81,7 @@ struct QrScannerView: View {
             if let data = value.data(using: .utf8){
                 credentials = try JSONDecoder().decode([String:String].self, from: data)
                 guard credentials.keys.contains("email") && credentials.keys.contains("password") else {
-                    presentError(message: "Invalid Qr Format")
+                    presentError(message: localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.invalidQrFormat.rawValue))
                     qrFormat = .invalid
                     return
                 }
@@ -91,7 +92,7 @@ struct QrScannerView: View {
             }
         } catch {
             qrFormat = .invalid
-            presentError(message: "Error While decoding")
+            presentError(message: localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.qrDecodingError.rawValue))
         }
     }
     
@@ -107,11 +108,11 @@ struct QrScannerView: View {
                     setupCamera()
                 } else{
                     cameraPermission = .denied
-                    presentError(message: "Need camera access for scanning QR")
+                    presentError(message: localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.needCameraAccess.rawValue))
                 }
             case .restricted , .denied:
                 cameraPermission = .denied
-                presentError(message: "Need camera access for scanning QR")
+                presentError(message: localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.needCameraAccess.rawValue))
             default:
                 break
             }
@@ -121,14 +122,14 @@ struct QrScannerView: View {
     private func setupCamera() {
         do {
             guard let device = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: .video, position: .back).devices.first else {
-                presentError(message: "UNKNOWN DEVICE ERROR")
+                presentError(message: localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.unknownDeviceError.rawValue))
                 return
             }
             
             let input = try AVCaptureDeviceInput(device: device)
             
             guard session.canAddInput(input) , session.canAddOutput(qrOutput) else {
-                presentError(message: "UNKNOWN QR ERROR")
+                presentError(message: localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.unknownQRError.rawValue))
                 return
             }
             

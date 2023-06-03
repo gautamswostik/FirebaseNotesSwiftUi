@@ -9,6 +9,7 @@ import SwiftUI
 import PhotosUI
 
 struct AddNotesView: View {
+    @EnvironmentObject var localeViewModel: LocaleViewModel
     @ObservedObject var dataViewModel:DataViewModel
     @State var title:String = String()
     @State var description:String = String()
@@ -19,39 +20,39 @@ struct AddNotesView: View {
         ZStack {
             NavigationView {
                 VStack(alignment: .leading){
-                    CustomTextField(textFieldTitle: "Title", fieldLabel: "Title", state: $title)
-                    CustomTextEditor(textFieldTitle: "Description",
-                                     fieldLabel: "Description",
+                    CustomTextField(textFieldTitle: localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.title.rawValue), fieldLabel: localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.title.rawValue), state: $title)
+                    CustomTextEditor(textFieldTitle: localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.description.rawValue),
+                                     fieldLabel: localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.description.rawValue),
                                      state: $description)
                     .padding(.top , 10)
-//                    Button {
-//                        self.showPicker = true
-//                    } label: {
-//                        ZStack(alignment: .center) {
-//                            Rectangle()
-//                                .strokeBorder(style: StrokeStyle(lineWidth: 2, dash: [10]))
-//                                .padding(.top , 10)
-//                            VStack {
-//                                Image(systemName: "photo")
-//                                    .resizable()
-//                                    .frame(width: 40 , height: 40)
-//                                Text("Add Image")
-//                                    .padding(.top , 10)
-//                            }
-//                        }
-//                    }
-//                    .buttonStyle(PlainButtonStyle())
-//                    .photosPicker(isPresented: $showPicker, selection: $avatarItem)
+                    //                    Button {
+                    //                        self.showPicker = true
+                    //                    } label: {
+                    //                        ZStack(alignment: .center) {
+                    //                            Rectangle()
+                    //                                .strokeBorder(style: StrokeStyle(lineWidth: 2, dash: [10]))
+                    //                                .padding(.top , 10)
+                    //                            VStack {
+                    //                                Image(systemName: "photo")
+                    //                                    .resizable()
+                    //                                    .frame(width: 40 , height: 40)
+                    //                                Text("Add Image")
+                    //                                    .padding(.top , 10)
+                    //                            }
+                    //                        }
+                    //                    }
+                    //                    .buttonStyle(PlainButtonStyle())
+                    //                    .photosPicker(isPresented: $showPicker, selection: $avatarItem)
                     Button {
                         addContent()
                     } label:{
-                        Text("Add Note")
+                        Text(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.addNote.rawValue))
                             .padding(.vertical ,12)
                             .padding(.horizontal,12)
                             .frame(maxWidth: .infinity)
                     }
                     .alert(dataViewModel.error, isPresented: $dataViewModel.showError) {
-                        Button("OK", role: .cancel) { }
+                        Button(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.ok.rawValue), role: .cancel) { }
                     }
                     .buttonStyle(.borderedProminent)
                     .padding(.top , 10)
@@ -59,7 +60,7 @@ struct AddNotesView: View {
                     Spacer()
                 }
                 .padding()
-                .navigationTitle("Add Note")
+                .navigationTitle(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.addNote.rawValue))
                 
             }
             if dataViewModel.addContentLoading {

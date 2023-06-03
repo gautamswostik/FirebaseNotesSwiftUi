@@ -18,6 +18,8 @@
 		7C461E782A10D6E80048BC9B /* MyNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C461E772A10D6E80048BC9B /* MyNotesView.swift */; };
 		7C7E11D62A274CDF008E57CE /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E11D52A274CDF008E57CE /* CameraView.swift */; };
 		7C7E11D82A2769E3008E57CE /* QrScannerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E11D72A2769E3008E57CE /* QrScannerDelegate.swift */; };
+		7CB3B0D92A2AC32E00A57BDF /* LocaleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB3B0D82A2AC32E00A57BDF /* LocaleViewModel.swift */; };
+		7CB3B0DC2A2AC38100A57BDF /* MyNotesLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB3B0DB2A2AC38100A57BDF /* MyNotesLocale.swift */; };
 		7CD1EACE2A0B41A0006202D0 /* MyNotesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1EACD2A0B41A0006202D0 /* MyNotesApp.swift */; };
 		7CD1EAD02A0B41A0006202D0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1EACF2A0B41A0006202D0 /* LoginView.swift */; };
 		7CD1EAD22A0B41A1006202D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CD1EAD12A0B41A1006202D0 /* Assets.xcassets */; };
@@ -66,6 +68,8 @@
 		7C461E772A10D6E80048BC9B /* MyNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNotesView.swift; sourceTree = "<group>"; };
 		7C7E11D52A274CDF008E57CE /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		7C7E11D72A2769E3008E57CE /* QrScannerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrScannerDelegate.swift; sourceTree = "<group>"; };
+		7CB3B0D82A2AC32E00A57BDF /* LocaleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleViewModel.swift; sourceTree = "<group>"; };
+		7CB3B0DB2A2AC38100A57BDF /* MyNotesLocale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNotesLocale.swift; sourceTree = "<group>"; };
 		7CD1EACA2A0B41A0006202D0 /* MyNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD1EACD2A0B41A0006202D0 /* MyNotesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNotesApp.swift; sourceTree = "<group>"; };
 		7CD1EACF2A0B41A0006202D0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -166,6 +170,7 @@
 			children = (
 				7C461E742A1065920048BC9B /* AuthViewModel.swift */,
 				7CFF22EC2A1301DB0066DCCC /* DataViewModel.swift */,
+				7CB3B0D82A2AC32E00A57BDF /* LocaleViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -177,6 +182,14 @@
 				7CDBBAEB2A17A80A005024D0 /* AddNotesView.swift */,
 			);
 			path = MyNotesView;
+			sourceTree = "<group>";
+		};
+		7CB3B0DA2A2AC36500A57BDF /* MyNotesLocale */ = {
+			isa = PBXGroup;
+			children = (
+				7CB3B0DB2A2AC38100A57BDF /* MyNotesLocale.swift */,
+			);
+			path = MyNotesLocale;
 			sourceTree = "<group>";
 		};
 		7CD1EAC12A0B41A0006202D0 = {
@@ -204,6 +217,7 @@
 		7CD1EACC2A0B41A0006202D0 /* MyNotes */ = {
 			isa = PBXGroup;
 			children = (
+				7CB3B0DA2A2AC36500A57BDF /* MyNotesLocale */,
 				7C461E6B2A0DEB400048BC9B /* Utils */,
 				7C461E662A0DCE420048BC9B /* CustomViews */,
 				7CFF22EE2A1304DC0066DCCC /* Model */,
@@ -520,8 +534,10 @@
 			files = (
 				7C3786152A26C91100FB6AE8 /* QrScannerView.swift in Sources */,
 				7C461E6A2A0DDC7F0048BC9B /* CustomSecureField.swift in Sources */,
+				7CB3B0D92A2AC32E00A57BDF /* LocaleViewModel.swift in Sources */,
 				7CFF22F02A1304EC0066DCCC /* NotesModel.swift in Sources */,
 				7C461E782A10D6E80048BC9B /* MyNotesView.swift in Sources */,
+				7CB3B0DC2A2AC38100A57BDF /* MyNotesLocale.swift in Sources */,
 				7CFF22ED2A1301DB0066DCCC /* DataViewModel.swift in Sources */,
 				7CD1EAD02A0B41A0006202D0 /* LoginView.swift in Sources */,
 				7C461E752A1065920048BC9B /* AuthViewModel.swift in Sources */,
