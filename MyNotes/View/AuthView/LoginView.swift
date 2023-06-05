@@ -15,7 +15,7 @@ struct LoginView: View {
     @State private var passwordState: String = String()
     @State private var showLanguageSheet: Bool = Bool()
     @State var showsAlert = false
-
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -39,10 +39,18 @@ struct LoginView: View {
                                 .padding(.horizontal,12)
                                 .frame(maxWidth: .infinity)
                         }
-                        .alert(authViewModel.error, isPresented: $authViewModel.showError) {
-                            Button(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.ok.rawValue), role: .cancel) { }
+                        .alert(isPresented: $authViewModel.showError) {
+                            Alert(
+                                title: Text("Alert Title"),
+                                message: Text("Alert Message"),
+                                primaryButton: .default(Text("OK")) {
+                                    // Handle primary action
+                                },
+                                secondaryButton: .cancel()
+                            )
+                            //                            Button(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.ok.rawValue), role: .cancel) { }
                         }
-                        .buttonStyle(.borderedProminent)
+                        .buttonStyle(.automatic)
                         .padding(.vertical , 10)
                     }
                     NavigationLink{
@@ -57,7 +65,7 @@ struct LoginView: View {
                     }
                 }.padding()
                 if authViewModel.loginLoading{
-                    showProgressView()
+                    ShowProgressView()
                 }
             }
             .onReceive(authViewModel.$loginSuccess) { loginSucces in
@@ -66,15 +74,13 @@ struct LoginView: View {
                     passwordState = ""
                 }
             }
-            .toolbar(content: {
-                Button {
-                    showLanguageSheet.toggle()
-                } label: {
-                    Image(systemName: "globe")
-                        .foregroundColor(.black)
-                }.padding(.top , 20)
-                    .padding(.trailing , 20)
-            })
+            .navigationBarItems(trailing: Button {
+                showLanguageSheet.toggle()
+            } label: {
+                Image(systemName: "globe")
+                    .foregroundColor(.black)
+            }.padding(.top , 20)
+                .padding(.trailing , 20))
             .sheet(isPresented: $showLanguageSheet) {
                 VStack {
                     ForEach(Locale.allCases , id: \.self){ locale in
@@ -89,12 +95,12 @@ struct LoginView: View {
                                     .frame(width:24 , height: 24)
                                 Spacer()
                                 Text(locale.rawValue)
-                                   
+                                
                             }.padding(.horizontal , 20)
                         }
                     }
                 }
-                .presentationDetents([.fraction(0.15) , .large])
+//                .presentationDetents([.fraction(0.15) , .large])
             }
             
         }

@@ -30,7 +30,6 @@ struct QrScannerView: View {
     @State private var errorMessage: String = String()
     @State private var showError: Bool = Bool()
     @State private var qrFormat: QrFormat = .noAvailable
-    @Environment(\.openURL) private var openUrl
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var qrDelegate = QRScannerDelegate()
     var body: some View {
@@ -51,27 +50,27 @@ struct QrScannerView: View {
             }
             .padding(.horizontal , 50)
             .onAppear(perform: checkCameraPermission)
-            .onChange(of: qrDelegate.scannedCode, perform: { newValue in
-                decodeQr(value: newValue)
-                session.stopRunning()
-            })
-            .alert(errorMessage, isPresented: $showError) {
-                if cameraPermission == .denied {
-                    Button(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.settings.rawValue)) {
-                        let settingsString = UIApplication.openSettingsURLString
-                        if let settingsUrl = URL(string: settingsString) {
-                            openUrl(settingsUrl)
-                        }
-                    }
-                }
-                if qrFormat == .invalid {
-                    Button(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.scanAgain.rawValue)) {
-                        setupCamera()
-                        qrFormat = .noAvailable
-                    }
-                }
-                Button(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.cancel.rawValue), role: .cancel) { }
-            }
+//            .onChange(of: qrDelegate.scannedCode, perform: { newValue in
+//                decodeQr(value: newValue)
+//                session.stopRunning()
+//            })
+//            .alert(errorMessage, isPresented: $showError) {
+//                if cameraPermission == .denied {
+//                    Button(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.settings.rawValue)) {
+//                        let settingsString = UIApplication.openSettingsURLString
+//                        if let settingsUrl = URL(string: settingsString) {
+//                            UIApplication.shared.open(settingsUrl)
+//                        }
+//                    }
+//                }
+//                if qrFormat == .invalid {
+//                    Button(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.scanAgain.rawValue)) {
+//                        setupCamera()
+//                        qrFormat = .noAvailable
+//                    }
+//                }
+//                Button(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.cancel.rawValue), role: .cancel) { }
+//            }
         }
     }
     

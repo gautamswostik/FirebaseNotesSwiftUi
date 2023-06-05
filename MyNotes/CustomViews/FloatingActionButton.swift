@@ -20,7 +20,7 @@ struct FloatingActionButton: View {
                         .font(.system(size: 25))
                         .foregroundColor(.white)
                 }.frame(width: 60 , height: 60)
-                    .background(.black)
+                    .foregroundColor(.red)
                     .cornerRadius(30)
                     .shadow(radius: 10)
                     .offset(x:-25 ,y: 10)

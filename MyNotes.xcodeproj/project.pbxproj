@@ -10,6 +10,7 @@
 		0842916D99B5ABD7D626B810 /* Pods_MyNotes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494EF2638093DAA4CFA90264 /* Pods_MyNotes.framework */; };
 		7C3280CA2A1467C9008B2BCE /* FloatingActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3280C92A1467C9008B2BCE /* FloatingActionButton.swift */; };
 		7C3786152A26C91100FB6AE8 /* QrScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3786142A26C91100FB6AE8 /* QrScannerView.swift */; };
+		7C43680F2A2D6ADB00517077 /* TextEditorUsingUikit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C43680E2A2D6ADB00517077 /* TextEditorUsingUikit.swift */; };
 		7C461E682A0DCE570048BC9B /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C461E672A0DCE570048BC9B /* CustomTextField.swift */; };
 		7C461E6A2A0DDC7F0048BC9B /* CustomSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C461E692A0DDC7F0048BC9B /* CustomSecureField.swift */; };
 		7C461E6D2A0DEB590048BC9B /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C461E6C2A0DEB590048BC9B /* Validators.swift */; };
@@ -20,6 +21,7 @@
 		7C7E11D82A2769E3008E57CE /* QrScannerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E11D72A2769E3008E57CE /* QrScannerDelegate.swift */; };
 		7CB3B0D92A2AC32E00A57BDF /* LocaleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB3B0D82A2AC32E00A57BDF /* LocaleViewModel.swift */; };
 		7CB3B0DC2A2AC38100A57BDF /* MyNotesLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB3B0DB2A2AC38100A57BDF /* MyNotesLocale.swift */; };
+		7CC41F802A2B8FCC004ACE3E /* AuthViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC41F7F2A2B8FCC004ACE3E /* AuthViewModelTests.swift */; };
 		7CD1EACE2A0B41A0006202D0 /* MyNotesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1EACD2A0B41A0006202D0 /* MyNotesApp.swift */; };
 		7CD1EAD02A0B41A0006202D0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1EACF2A0B41A0006202D0 /* LoginView.swift */; };
 		7CD1EAD22A0B41A1006202D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CD1EAD12A0B41A1006202D0 /* Assets.xcassets */; };
@@ -29,7 +31,7 @@
 		7CD1EAEB2A0B41A2006202D0 /* MyNotesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1EAEA2A0B41A2006202D0 /* MyNotesUITestsLaunchTests.swift */; };
 		7CDBBAEC2A17A80A005024D0 /* AddNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDBBAEB2A17A80A005024D0 /* AddNotesView.swift */; };
 		7CDBBAEE2A17C6A4005024D0 /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDBBAED2A17C6A4005024D0 /* CustomTextEditor.swift */; };
-		7CDBBAF02A17CBF1005024D0 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDBBAEF2A17CBF1005024D0 /* ProgressView.swift */; };
+		7CDBBAF02A17CBF1005024D0 /* ShowProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDBBAEF2A17CBF1005024D0 /* ShowProgressView.swift */; };
 		7CFF22ED2A1301DB0066DCCC /* DataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFF22EC2A1301DB0066DCCC /* DataViewModel.swift */; };
 		7CFF22F02A1304EC0066DCCC /* NotesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFF22EF2A1304EC0066DCCC /* NotesModel.swift */; };
 		7CFF883E2A1124EA00EAD9A7 /* RegisterUiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFF883D2A1124EA00EAD9A7 /* RegisterUiView.swift */; };
@@ -60,6 +62,7 @@
 		676E5DECF00B19576B869D2F /* Pods-MyNotes-MyNotesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyNotes-MyNotesUITests.release.xcconfig"; path = "Target Support Files/Pods-MyNotes-MyNotesUITests/Pods-MyNotes-MyNotesUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7C3280C92A1467C9008B2BCE /* FloatingActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingActionButton.swift; sourceTree = "<group>"; };
 		7C3786142A26C91100FB6AE8 /* QrScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrScannerView.swift; sourceTree = "<group>"; };
+		7C43680E2A2D6ADB00517077 /* TextEditorUsingUikit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorUsingUikit.swift; sourceTree = "<group>"; };
 		7C461E672A0DCE570048BC9B /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		7C461E692A0DDC7F0048BC9B /* CustomSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureField.swift; sourceTree = "<group>"; };
 		7C461E6C2A0DEB590048BC9B /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
@@ -70,6 +73,7 @@
 		7C7E11D72A2769E3008E57CE /* QrScannerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrScannerDelegate.swift; sourceTree = "<group>"; };
 		7CB3B0D82A2AC32E00A57BDF /* LocaleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleViewModel.swift; sourceTree = "<group>"; };
 		7CB3B0DB2A2AC38100A57BDF /* MyNotesLocale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNotesLocale.swift; sourceTree = "<group>"; };
+		7CC41F7F2A2B8FCC004ACE3E /* AuthViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModelTests.swift; sourceTree = "<group>"; };
 		7CD1EACA2A0B41A0006202D0 /* MyNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD1EACD2A0B41A0006202D0 /* MyNotesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNotesApp.swift; sourceTree = "<group>"; };
 		7CD1EACF2A0B41A0006202D0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -82,7 +86,7 @@
 		7CD1EAEA2A0B41A2006202D0 /* MyNotesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNotesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7CDBBAEB2A17A80A005024D0 /* AddNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNotesView.swift; sourceTree = "<group>"; };
 		7CDBBAED2A17C6A4005024D0 /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
-		7CDBBAEF2A17CBF1005024D0 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		7CDBBAEF2A17CBF1005024D0 /* ShowProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowProgressView.swift; sourceTree = "<group>"; };
 		7CFF22EC2A1301DB0066DCCC /* DataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewModel.swift; sourceTree = "<group>"; };
 		7CFF22EF2A1304EC0066DCCC /* NotesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesModel.swift; sourceTree = "<group>"; };
 		7CFF883D2A1124EA00EAD9A7 /* RegisterUiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUiView.swift; sourceTree = "<group>"; };
@@ -152,6 +156,7 @@
 				7C461E692A0DDC7F0048BC9B /* CustomSecureField.swift */,
 				7C3280C92A1467C9008B2BCE /* FloatingActionButton.swift */,
 				7CDBBAED2A17C6A4005024D0 /* CustomTextEditor.swift */,
+				7C43680E2A2D6ADB00517077 /* TextEditorUsingUikit.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -160,7 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				7C461E6C2A0DEB590048BC9B /* Validators.swift */,
-				7CDBBAEF2A17CBF1005024D0 /* ProgressView.swift */,
+				7CDBBAEF2A17CBF1005024D0 /* ShowProgressView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -242,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				7CD1EADE2A0B41A2006202D0 /* MyNotesTests.swift */,
+				7CC41F7F2A2B8FCC004ACE3E /* AuthViewModelTests.swift */,
 			);
 			path = MyNotesTests;
 			sourceTree = "<group>";
@@ -541,13 +547,14 @@
 				7CFF22ED2A1301DB0066DCCC /* DataViewModel.swift in Sources */,
 				7CD1EAD02A0B41A0006202D0 /* LoginView.swift in Sources */,
 				7C461E752A1065920048BC9B /* AuthViewModel.swift in Sources */,
+				7C43680F2A2D6ADB00517077 /* TextEditorUsingUikit.swift in Sources */,
 				7C7E11D82A2769E3008E57CE /* QrScannerDelegate.swift in Sources */,
 				7CDBBAEE2A17C6A4005024D0 /* CustomTextEditor.swift in Sources */,
 				7CD1EACE2A0B41A0006202D0 /* MyNotesApp.swift in Sources */,
 				7CFF883E2A1124EA00EAD9A7 /* RegisterUiView.swift in Sources */,
 				7C461E682A0DCE570048BC9B /* CustomTextField.swift in Sources */,
 				7C3280CA2A1467C9008B2BCE /* FloatingActionButton.swift in Sources */,
-				7CDBBAF02A17CBF1005024D0 /* ProgressView.swift in Sources */,
+				7CDBBAF02A17CBF1005024D0 /* ShowProgressView.swift in Sources */,
 				7CDBBAEC2A17A80A005024D0 /* AddNotesView.swift in Sources */,
 				7C461E6D2A0DEB590048BC9B /* Validators.swift in Sources */,
 				7C7E11D62A274CDF008E57CE /* CameraView.swift in Sources */,
@@ -558,6 +565,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CC41F802A2B8FCC004ACE3E /* AuthViewModelTests.swift in Sources */,
 				7CD1EADF2A0B41A2006202D0 /* MyNotesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -719,6 +727,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -750,6 +759,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

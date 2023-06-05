@@ -21,6 +21,7 @@
  In summary, the provided code is used to dismiss the current view when executed. It is typically used when you want to programmatically dismiss a modal or pushed view and return to the previous view in the navigation stack.
  */
 import SwiftUI
+import URLImage
 
 struct MyNotesView: View {
     @EnvironmentObject var localeViewModel: LocaleViewModel
@@ -45,7 +46,7 @@ struct MyNotesView: View {
                             }
                             else {
                                 ScrollView {
-                                    LazyVStack {
+                                    VStack {
                                         ForEach(dataViewModel.notes, id: \.id) { item in
                                             VStack {
                                                 VStack(alignment: .leading){
@@ -54,11 +55,19 @@ struct MyNotesView: View {
                                                         .padding(.horizontal , 16)
                                                         .padding(.vertical , 8)
                                                         .lineLimit(1)
-                                                    AsyncImage(url: URL(string: item.image)){ image in
+                                                    URLImage(item.image ?? "") {
+                                                        EmptyView()
+                                                    } inProgress: { progress in
+                                                        Color.black.opacity(0.1)
+                                                    } failure: { error, retry in
+                                                        VStack {
+                                                            Text(error.localizedDescription)
+                                                            Button("Retry", action: retry)
+                                                        }
+                                                    } content: { image in
                                                         image
                                                             .resizable()
-                                                    } placeholder: {
-                                                        Color.black.opacity(0.1)
+                                                            .aspectRatio(contentMode: .fit)
                                                     }
                                                     .frame(width:UIScreen.main.bounds.width,
                                                            height:  UIScreen.main.bounds.height*0.40)

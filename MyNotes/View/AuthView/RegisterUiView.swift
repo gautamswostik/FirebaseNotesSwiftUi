@@ -43,7 +43,7 @@ struct RegisterUiView: View {
                 
             }.padding()
             if authViewModel.registrationLoading{
-                showProgressView()
+                ShowProgressView()
             }
         }.onReceive(authViewModel.$registrationSuccess, perform: { registrationSuccess in
             if registrationSuccess {

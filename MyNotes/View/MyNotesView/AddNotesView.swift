@@ -15,7 +15,6 @@ struct AddNotesView: View {
     @State var description:String = String()
     @State var showPicker:Bool = Bool()
     @Environment(\.presentationMode) var presentationMode
-    @State private var avatarItem: PhotosPickerItem?
     var body: some View {
         ZStack {
             NavigationView {
@@ -51,20 +50,28 @@ struct AddNotesView: View {
                             .padding(.horizontal,12)
                             .frame(maxWidth: .infinity)
                     }
-                    .alert(dataViewModel.error, isPresented: $dataViewModel.showError) {
-                        Button(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.ok.rawValue), role: .cancel) { }
+                    .alert(isPresented: $dataViewModel.showError) {
+                        Alert(
+                                    title: Text(dataViewModel.error),
+                                    message: Text("Alert Message"),
+                                    primaryButton: .default(Text("OK")) {
+                                        // Handle primary action
+                                    },
+                                    secondaryButton: .cancel()
+                                )
+//                        Button(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.ok.rawValue), role: .cancel) { }
                     }
-                    .buttonStyle(.borderedProminent)
+                    .buttonStyle(.automatic)
                     .padding(.top , 10)
                     .padding(.bottom , 60)
                     Spacer()
                 }
                 .padding()
-                .navigationTitle(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.addNote.rawValue))
+                .navigationBarTitle(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.addNote.rawValue))
                 
             }
             if dataViewModel.addContentLoading {
-                showProgressView()
+                ShowProgressView()
             }
             
         }.onReceive(dataViewModel.$addContentSuccess) { addSuccess in
