@@ -35,10 +35,10 @@ struct RegisterUiView: View {
                         .padding(.horizontal,12)
                         .frame(maxWidth: .infinity)
                 }
-                .alert(authViewModel.error, isPresented: $authViewModel.showError) {
-                    Button(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.ok.rawValue), role: .cancel) { }
-                }
-                .buttonStyle(.borderedProminent)
+//                .alert(authViewModel.error, isPresented: $authViewModel.showError) {
+//                    Button(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.ok.rawValue), role: .cancel) { }
+//                }
+//                .buttonStyle(.borderedProminent)
                 .padding(.vertical , 10)
                 
             }.padding()

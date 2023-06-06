@@ -6,25 +6,12 @@
 //
 
 import SwiftUI
-import FirebaseCore
 
-class AppDelegate: NSObject, UIApplicationDelegate {
-    func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        FirebaseApp.configure()
-        return true
-    }
-}
-
-
-@main
-struct MyNotesApp: App {
+struct MyNotesApp: View {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     let localeViewModel = LocaleViewModel()
-    var body: some Scene {
-        WindowGroup {
-            LoginView()
-                .environmentObject(localeViewModel)
-        }
+    var body: some View {
+        LoginView()
+            .environmentObject(localeViewModel)
     }
 }

@@ -32,6 +32,8 @@
 		7CDBBAEC2A17A80A005024D0 /* AddNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDBBAEB2A17A80A005024D0 /* AddNotesView.swift */; };
 		7CDBBAEE2A17C6A4005024D0 /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDBBAED2A17C6A4005024D0 /* CustomTextEditor.swift */; };
 		7CDBBAF02A17CBF1005024D0 /* ShowProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDBBAEF2A17CBF1005024D0 /* ShowProgressView.swift */; };
+		7CDCC9CB2A2EB1D900B87063 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDCC9CA2A2EB1D900B87063 /* AppDelegate.swift */; };
+		7CDCC9CD2A2EB1E500B87063 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDCC9CC2A2EB1E500B87063 /* SceneDelegate.swift */; };
 		7CFF22ED2A1301DB0066DCCC /* DataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFF22EC2A1301DB0066DCCC /* DataViewModel.swift */; };
 		7CFF22F02A1304EC0066DCCC /* NotesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFF22EF2A1304EC0066DCCC /* NotesModel.swift */; };
 		7CFF883E2A1124EA00EAD9A7 /* RegisterUiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFF883D2A1124EA00EAD9A7 /* RegisterUiView.swift */; };
@@ -87,6 +89,8 @@
 		7CDBBAEB2A17A80A005024D0 /* AddNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNotesView.swift; sourceTree = "<group>"; };
 		7CDBBAED2A17C6A4005024D0 /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
 		7CDBBAEF2A17CBF1005024D0 /* ShowProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowProgressView.swift; sourceTree = "<group>"; };
+		7CDCC9CA2A2EB1D900B87063 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7CDCC9CC2A2EB1E500B87063 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7CFF22EC2A1301DB0066DCCC /* DataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewModel.swift; sourceTree = "<group>"; };
 		7CFF22EF2A1304EC0066DCCC /* NotesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesModel.swift; sourceTree = "<group>"; };
 		7CFF883D2A1124EA00EAD9A7 /* RegisterUiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUiView.swift; sourceTree = "<group>"; };
@@ -222,6 +226,7 @@
 		7CD1EACC2A0B41A0006202D0 /* MyNotes */ = {
 			isa = PBXGroup;
 			children = (
+				7CDCC9C92A2EB1BC00B87063 /* Startup */,
 				7CB3B0DA2A2AC36500A57BDF /* MyNotesLocale */,
 				7C461E6B2A0DEB400048BC9B /* Utils */,
 				7C461E662A0DCE420048BC9B /* CustomViews */,
@@ -279,6 +284,15 @@
 				7CD1EACD2A0B41A0006202D0 /* MyNotesApp.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		7CDCC9C92A2EB1BC00B87063 /* Startup */ = {
+			isa = PBXGroup;
+			children = (
+				7CDCC9CA2A2EB1D900B87063 /* AppDelegate.swift */,
+				7CDCC9CC2A2EB1E500B87063 /* SceneDelegate.swift */,
+			);
+			path = Startup;
 			sourceTree = "<group>";
 		};
 		7CFF22EE2A1304DC0066DCCC /* Model */ = {
@@ -545,6 +559,7 @@
 				7C461E782A10D6E80048BC9B /* MyNotesView.swift in Sources */,
 				7CB3B0DC2A2AC38100A57BDF /* MyNotesLocale.swift in Sources */,
 				7CFF22ED2A1301DB0066DCCC /* DataViewModel.swift in Sources */,
+				7CDCC9CD2A2EB1E500B87063 /* SceneDelegate.swift in Sources */,
 				7CD1EAD02A0B41A0006202D0 /* LoginView.swift in Sources */,
 				7C461E752A1065920048BC9B /* AuthViewModel.swift in Sources */,
 				7C43680F2A2D6ADB00517077 /* TextEditorUsingUikit.swift in Sources */,
@@ -556,6 +571,7 @@
 				7C3280CA2A1467C9008B2BCE /* FloatingActionButton.swift in Sources */,
 				7CDBBAF02A17CBF1005024D0 /* ShowProgressView.swift in Sources */,
 				7CDBBAEC2A17A80A005024D0 /* AddNotesView.swift in Sources */,
+				7CDCC9CB2A2EB1D900B87063 /* AppDelegate.swift in Sources */,
 				7C461E6D2A0DEB590048BC9B /* Validators.swift in Sources */,
 				7C7E11D62A274CDF008E57CE /* CameraView.swift in Sources */,
 			);

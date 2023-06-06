@@ -53,7 +53,7 @@ class DataViewModel: ObservableObject {
                                               title: document["title"] as? String ?? "",
                                               description: document["description"] as? String ?? "",
                                               image: document["image"] as? String ?? "",
-                                              dateCreated: document["dateCreated"] as? Date ?? Date.now))
+                                                   dateCreated: document["dateCreated"] as? Date ?? Date().now()))
                         }
                         return false
                     }
@@ -101,5 +101,11 @@ class DataViewModel: ObservableObject {
             }
             self.loadNotes()
         }
+    }
+}
+
+extension Date {
+    func now() -> Date {
+        return self
     }
 }

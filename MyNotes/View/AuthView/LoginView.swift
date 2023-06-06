@@ -41,16 +41,15 @@ struct LoginView: View {
                         }
                         .alert(isPresented: $authViewModel.showError) {
                             Alert(
-                                title: Text("Alert Title"),
-                                message: Text("Alert Message"),
+                                title: Text(authViewModel.error),
                                 primaryButton: .default(Text("OK")) {
                                     // Handle primary action
-                                },
-                                secondaryButton: .cancel()
+                                }, secondaryButton: .destructive(Text("as"))
+                                
                             )
                             //                            Button(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.ok.rawValue), role: .cancel) { }
                         }
-                        .buttonStyle(.automatic)
+                        .buttonStyle(.plain)
                         .padding(.vertical , 10)
                     }
                     NavigationLink{

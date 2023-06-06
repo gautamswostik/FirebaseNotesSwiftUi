@@ -18,18 +18,18 @@ struct CustomSecureField: View {
         VStack(alignment: .leading){
             Text(fieldLabel)
             SecureField(textFieldTitle,text: $state)
-                .onChange(of: state, perform: { newValue in
-                    if !newValue.isEmpty {
-                        self.isValid =  validate(newValue)
-                        if(!isValid) {
-                            self.fieldColor = Color.red
-                            return
-                        }
-                        self.fieldColor = Color.black
-                        return
-                    }
-                    self.fieldColor = Color.black
-                })
+//                .onChange(of: state, perform: { newValue in
+//                    if !newValue.isEmpty {
+//                        self.isValid =  validate(newValue)
+//                        if(!isValid) {
+//                            self.fieldColor = Color.red
+//                            return
+//                        }
+//                        self.fieldColor = Color.black
+//                        return
+//                    }
+//                    self.fieldColor = Color.black
+//                })
                 .padding(.vertical ,12)
                 .padding(.horizontal,12)
                 .overlay(RoundedRectangle(cornerRadius: 4.0).strokeBorder(fieldColor, style: StrokeStyle(lineWidth: 1.0)))
