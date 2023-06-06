@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AVKit
+import Combine
 
 enum Permission: String {
     case idle = "Not Determined"
@@ -28,7 +29,8 @@ struct QrScannerView: View {
     @State private var cameraPermission: Permission = .idle
     @State private var qrOutput: AVCaptureMetadataOutput = .init()
     @State private var errorMessage: String = String()
-    @State private var showError: Bool = Bool()
+    @State private var showInvalidQRrror: Bool = Bool()
+    @State private var showCameraPermissionError: Bool = Bool()
     @State private var qrFormat: QrFormat = .noAvailable
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var qrDelegate = QRScannerDelegate()
@@ -50,27 +52,31 @@ struct QrScannerView: View {
             }
             .padding(.horizontal , 50)
             .onAppear(perform: checkCameraPermission)
-//            .onChange(of: qrDelegate.scannedCode, perform: { newValue in
-//                decodeQr(value: newValue)
-//                session.stopRunning()
-//            })
-//            .alert(errorMessage, isPresented: $showError) {
-//                if cameraPermission == .denied {
-//                    Button(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.settings.rawValue)) {
-//                        let settingsString = UIApplication.openSettingsURLString
-//                        if let settingsUrl = URL(string: settingsString) {
-//                            UIApplication.shared.open(settingsUrl)
-//                        }
-//                    }
-//                }
-//                if qrFormat == .invalid {
-//                    Button(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.scanAgain.rawValue)) {
-//                        setupCamera()
-//                        qrFormat = .noAvailable
-//                    }
-//                }
-//                Button(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.cancel.rawValue), role: .cancel) { }
-//            }
+            .onReceive(Just(qrDelegate.scannedCode), perform: { newValue in
+                guard !newValue.isEmpty else {return}
+                decodeQr(value: newValue)
+                session.stopRunning()
+            })
+            .alert(isPresented: $showInvalidQRrror) {
+                Alert(title: Text(errorMessage),
+                      primaryButton: .cancel(Text(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.scanAgain.rawValue)) ,action: {
+                    setupCamera()
+                    qrFormat = .noAvailable
+                }),
+                      secondaryButton: .cancel(Text(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.cancel.rawValue)))
+                )
+            }
+            .alert(isPresented: $showCameraPermissionError) {
+                Alert(title: Text(errorMessage),
+                      primaryButton: .cancel(Text(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.settings.rawValue)) ,action: {
+                    let settingsString = UIApplication.openSettingsURLString
+                    if let settingsUrl = URL(string: settingsString) {
+                        UIApplication.shared.open(settingsUrl)
+                    }
+                }),
+                      secondaryButton: .cancel(Text(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.cancel.rawValue)))
+                )
+            }
         }
     }
     
@@ -80,7 +86,7 @@ struct QrScannerView: View {
             if let data = value.data(using: .utf8){
                 credentials = try JSONDecoder().decode([String:String].self, from: data)
                 guard credentials.keys.contains("email") && credentials.keys.contains("password") else {
-                    presentError(message: localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.invalidQrFormat.rawValue))
+                    presentQRError(message: localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.invalidQrFormat.rawValue))
                     qrFormat = .invalid
                     return
                 }
@@ -91,7 +97,7 @@ struct QrScannerView: View {
             }
         } catch {
             qrFormat = .invalid
-            presentError(message: localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.qrDecodingError.rawValue))
+            presentQRError(message: localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.qrDecodingError.rawValue))
         }
     }
     
@@ -107,11 +113,11 @@ struct QrScannerView: View {
                     setupCamera()
                 } else{
                     cameraPermission = .denied
-                    presentError(message: localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.needCameraAccess.rawValue))
+                    presentCameraPermissionError(message: localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.needCameraAccess.rawValue))
                 }
             case .restricted , .denied:
                 cameraPermission = .denied
-                presentError(message: localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.needCameraAccess.rawValue))
+                presentCameraPermissionError(message: localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.needCameraAccess.rawValue))
             default:
                 break
             }
@@ -121,14 +127,14 @@ struct QrScannerView: View {
     private func setupCamera() {
         do {
             guard let device = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: .video, position: .back).devices.first else {
-                presentError(message: localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.unknownDeviceError.rawValue))
+                presentQRError(message: localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.unknownDeviceError.rawValue))
                 return
             }
             
             let input = try AVCaptureDeviceInput(device: device)
             
             guard session.canAddInput(input) , session.canAddOutput(qrOutput) else {
-                presentError(message: localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.unknownQRError.rawValue))
+                presentQRError(message: localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.unknownQRError.rawValue))
                 return
             }
             
@@ -146,8 +152,12 @@ struct QrScannerView: View {
         } catch {}
     }
     
-    private func presentError(message:String) {
+    private func presentQRError(message:String) {
         errorMessage = message
-        showError.toggle()
+        showInvalidQRrror.toggle()
+    }
+    private func presentCameraPermissionError(message:String) {
+        errorMessage = message
+        showCameraPermissionError.toggle()
     }
 }

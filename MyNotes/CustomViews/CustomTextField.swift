@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct CustomTextField: View {
     var textFieldTitle: String
@@ -18,30 +19,18 @@ struct CustomTextField: View {
         VStack(alignment: .leading){
             Text(fieldLabel)
             TextField(textFieldTitle,text: $state)
-                .onReceive(NotificationCenter.default.publisher(for: UITextField.textDidChangeNotification)) { _ in
-                                   if !state.isEmpty {
-                                       self.isValid = validate?(state) ?? true
-                                       if !isValid {
-                                           self.fieldColor = Color.red
-                                           return
-                                       }
-                                       self.fieldColor = Color.black
-                                   } else {
-                                       self.fieldColor = Color.black
-                                   }
-                               }
-//                .onChange(of: state, perform: { newValue in
-//                    if !newValue.isEmpty {
-//                        self.isValid =  validate?(newValue) ?? true
-//                        if(!isValid) {
-//                            self.fieldColor = Color.red
-//                            return
-//                        }
-//                        self.fieldColor = Color.black
-//                        return
-//                    }
-//                    self.fieldColor = Color.black
-//                })
+                .onReceive(Just(state), perform: { newValue in
+                    if !newValue.isEmpty {
+                        self.isValid =  validate?(newValue) ?? true
+                        if(!isValid) {
+                            self.fieldColor = Color.red
+                            return
+                        }
+                        self.fieldColor = Color.black
+                        return
+                    }
+                    self.fieldColor = Color.black
+                })
                 .padding(.vertical ,12)
                 .padding(.horizontal,12)
                 .overlay(RoundedRectangle(cornerRadius: 4.0).strokeBorder(fieldColor, style: StrokeStyle(lineWidth: 1.0)))

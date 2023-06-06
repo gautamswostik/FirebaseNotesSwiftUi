@@ -3,6 +3,8 @@ import UIKit
 
 struct CustomTextArea: UIViewRepresentable {
     @Binding var text: String
+    var onChanged:((String) -> Void)
+    
 
     func makeUIView(context: Context) -> UITextView {
         let textView = UITextView()
@@ -10,23 +12,26 @@ struct CustomTextArea: UIViewRepresentable {
         return textView
     }
 
-    func updateUIView(_ uiView: UITextView, context: Context) {
+    func updateUIView(_ uiView: UIViewType, context: Context) {
         uiView.text = text
     }
 
     func makeCoordinator() -> Coordinator {
-        Coordinator(text: $text)
+        Coordinator(text: $text , onChanged: onChanged)
     }
 
     class Coordinator: NSObject, UITextViewDelegate {
         @Binding var text: String
-
-        init(text: Binding<String>) {
+        var onChanged: ((String) -> Void)
+        
+        init(text: Binding<String> , onChanged:@escaping ((String) -> Void)) {
             _text = text
+            self.onChanged = onChanged
         }
 
         func textViewDidChange(_ textView: UITextView) {
             text = textView.text
+            onChanged(text)
         }
     }
 }

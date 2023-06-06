@@ -12,8 +12,7 @@ import SwiftUI
 
 struct ShowProgressView: View {
     var body: some View {
-//        ProgressView()
-        Text("Loading")
+        CustomProgressIndicatorCircular()
             .frame(maxWidth: .infinity , maxHeight: .infinity)
             .background(Color.black.opacity(0.4))
             .foregroundColor(.white)

@@ -76,7 +76,7 @@ class DataViewModel: ObservableObject {
                             ["title":title ,
                              "description":description ,
                              "image":image ,
-                             "dateCreated":Date.now,
+                             "dateCreated":Date().now(),
                              "userId": userId!
                             ]) {error in
                 if error != nil {

@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import PhotosUI
 
 struct AddNotesView: View {
     @EnvironmentObject var localeViewModel: LocaleViewModel
@@ -24,44 +23,21 @@ struct AddNotesView: View {
                                      fieldLabel: localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.description.rawValue),
                                      state: $description)
                     .padding(.top , 10)
-                    //                    Button {
-                    //                        self.showPicker = true
-                    //                    } label: {
-                    //                        ZStack(alignment: .center) {
-                    //                            Rectangle()
-                    //                                .strokeBorder(style: StrokeStyle(lineWidth: 2, dash: [10]))
-                    //                                .padding(.top , 10)
-                    //                            VStack {
-                    //                                Image(systemName: "photo")
-                    //                                    .resizable()
-                    //                                    .frame(width: 40 , height: 40)
-                    //                                Text("Add Image")
-                    //                                    .padding(.top , 10)
-                    //                            }
-                    //                        }
-                    //                    }
-                    //                    .buttonStyle(PlainButtonStyle())
-                    //                    .photosPicker(isPresented: $showPicker, selection: $avatarItem)
                     Button {
                         addContent()
                     } label:{
                         Text(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.addNote.rawValue))
+                            .foregroundColor(.white)
                             .padding(.vertical ,12)
                             .padding(.horizontal,12)
                             .frame(maxWidth: .infinity)
                     }
                     .alert(isPresented: $dataViewModel.showError) {
-                        Alert(
-                                    title: Text(dataViewModel.error),
-                                    message: Text("Alert Message"),
-                                    primaryButton: .default(Text("OK")) {
-                                        // Handle primary action
-                                    },
-                                    secondaryButton: .cancel()
-                                )
-//                        Button(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.ok.rawValue), role: .cancel) { }
+                        Alert(title: Text(dataViewModel.error),
+                              dismissButton: .cancel(Text(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.ok.rawValue))))
                     }
-                    .buttonStyle(.automatic)
+                    .background(Color.blue)
+                    .clipShape(RoundedRectangle(cornerRadius: 6))
                     .padding(.top , 10)
                     .padding(.bottom , 60)
                     Spacer()

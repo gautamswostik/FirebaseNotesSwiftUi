@@ -10,7 +10,7 @@ target 'MyNotes' do
   pod "Firebase/Firestore"
   pod "Firebase/Analytics"
   pod "FirebaseFirestoreSwift"
-  pod "URLImage"
+  pod "SDWebImageSwiftUI"
   target 'MyNotesTests' do
     inherit! :search_paths
     # Pods for testing

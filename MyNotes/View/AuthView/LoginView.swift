@@ -35,21 +35,16 @@ struct LoginView: View {
                             login()
                         } label:{
                             Text(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.logIn.rawValue))
+                                .foregroundColor(.white)
                                 .padding(.vertical ,12)
                                 .padding(.horizontal,12)
                                 .frame(maxWidth: .infinity)
                         }
                         .alert(isPresented: $authViewModel.showError) {
-                            Alert(
-                                title: Text(authViewModel.error),
-                                primaryButton: .default(Text("OK")) {
-                                    // Handle primary action
-                                }, secondaryButton: .destructive(Text("as"))
-                                
-                            )
-                            //                            Button(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.ok.rawValue), role: .cancel) { }
+                            Alert(title: Text(authViewModel.error),dismissButton: .cancel(Text(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.ok.rawValue))))
                         }
-                        .buttonStyle(.plain)
+                        .background(Color.blue)
+                        .clipShape(RoundedRectangle(cornerRadius: 6))
                         .padding(.vertical , 10)
                     }
                     NavigationLink{
@@ -66,6 +61,7 @@ struct LoginView: View {
                 if authViewModel.loginLoading{
                     ShowProgressView()
                 }
+
             }
             .onReceive(authViewModel.$loginSuccess) { loginSucces in
                 if loginSucces {
@@ -99,7 +95,7 @@ struct LoginView: View {
                         }
                     }
                 }
-//                .presentationDetents([.fraction(0.15) , .large])
+                //                .presentationDetents([.fraction(0.15) , .large])
             }
             
         }

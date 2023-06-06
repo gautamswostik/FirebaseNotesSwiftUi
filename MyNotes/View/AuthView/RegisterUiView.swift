@@ -31,14 +31,16 @@ struct RegisterUiView: View {
                     register()
                 } label:{
                     Text(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.register.rawValue))
+                        .foregroundColor(.white)
                         .padding(.vertical ,12)
                         .padding(.horizontal,12)
                         .frame(maxWidth: .infinity)
                 }
-//                .alert(authViewModel.error, isPresented: $authViewModel.showError) {
-//                    Button(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.ok.rawValue), role: .cancel) { }
-//                }
-//                .buttonStyle(.borderedProminent)
+                .background(Color.blue)
+                .clipShape(RoundedRectangle(cornerRadius: 6))
+                .alert(isPresented: $authViewModel.showError) {
+                    Alert(title: Text(authViewModel.error),dismissButton: .cancel(Text(localeViewModel.getString(currentLocale: localeViewModel.currentLocale, key: MyNotesLocaleKeys.ok.rawValue))))
+                }
                 .padding(.vertical , 10)
                 
             }.padding()
